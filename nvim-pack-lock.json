@@ -1,0 +1,22 @@
+{
+  "plugins": {
+    "nvim-tree.lua": {
+      "rev": "ba85443ca5fe92290dcc073e0100c1908ddde634",
+      "src": "https://github.com/nvim-tree/nvim-tree.lua",
+      "version": ">=0.0.0"
+    },
+    "nvim-web-devicons": {
+      "rev": "0dc0cfb0c6858041174a53c7aa4adaf65e994b3c",
+      "src": "https://github.com/nvim-tree/nvim-web-devicons"
+    },
+    "plenary.nvim": {
+      "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
+      "src": "https://github.com/nvim-lua/plenary.nvim"
+    },
+    "telescope.nvim": {
+      "rev": "5255aa27c422de944791318024167ad5d40aad20",
+      "src": "https://github.com/nvim-telescope/telescope.nvim",
+      "version": ">=0.0.0"
+    }
+  }
+}
