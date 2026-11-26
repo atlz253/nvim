@@ -1,0 +1,2 @@
+require("settings/nvim-tree")
+
