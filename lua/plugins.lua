@@ -22,5 +22,12 @@ vim.pack.add({
     src = "https://github.com/mason-org/mason.nvim",
     version = vim.version.range("^2.0.0"),
   },
+  -- цветовая схема Noirbuddy
+  {
+    src = "https://github.com/tjdevries/colorbuddy.nvim",
+  },
+  {
+    src = "https://github.com/jesseleite/noirbuddy.nvim",
+  },
 })
 
