@@ -2,6 +2,7 @@
 require("globals")
 require("plugins")
 -- порядок обязателен сверху
+require("lsp")
 require("commands")
 require("hotkeys")
 require("settings")
