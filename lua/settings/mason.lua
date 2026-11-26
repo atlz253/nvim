@@ -2,8 +2,11 @@ require("mason").setup({})
 
 -- установка отсутствующих пакетов при первичной инициализации редактора
 local packages = {
+  -- поддержка языка lua
   "lua-language-server",
   "stylua",
+  -- поддержка языка toml
+  "taplo",
 }
 
 local registry = require("mason-registry")
