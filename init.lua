@@ -35,14 +35,20 @@ require("nvim-tree").setup()
 
 local builtin = require("telescope.builtin")
 
--- палитра команд
-vim.keymap.set("n", "<C-p>", builtin.commands, {
-    desc = "Command palette",
+vim.keymap.set("n", "π", builtin.commands, { -- Option + p
+    desc = "Палитра команд",
 })
 
--- палитра файлов
-vim.keymap.set("n", "<C-S-p>", builtin.find_files, {
-    desc = "Find files",
+vim.keymap.set("n", "∏", builtin.find_files, { -- Option + Shift + p
+    desc = "Палитра файлов",
+})
+ 
+vim.keymap.set("n", "ƒ", "<Cmd>NvimTreeFocus<CR>", { -- Option + f
+    desc = "Фокус на file tree",
+})
+
+vim.keymap.set("n", "©", "<Cmd>wincmd l<CR>", { -- Option + g
+    desc = "Фокус на текстовый редактор",
 })
 
 -- автозапуск
@@ -52,5 +58,27 @@ vim.api.nvim_create_autocmd("VimEnter", {
     end,
 })
 
--- закрытие всех окон при :q
+-- закрытие всех окон при :q и :wq
 vim.cmd("cnoreabbrev q qa")
+vim.cmd("cnoreabbrev wq wqa")
+
+-- утилита для проверки сочетания клавиш
+vim.api.nvim_create_user_command("AtlzKeyTest", function()
+    print("Press any key combination (Esc to exit)")
+
+    while true do
+        local key = vim.fn.getcharstr()
+        local translated = vim.fn.keytrans(key)
+
+        if translated == "<Esc>" then
+            break
+        end
+
+        print("Key: " .. translated .. " | Unicode: " .. vim.fn.char2nr(key))
+    end
+
+    print("KeyTest finished")
+end, {
+    desc = "Test keyboard combinations",
+})
+
