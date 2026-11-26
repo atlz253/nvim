@@ -34,4 +34,13 @@ vim.pack.add({
     src = "https://github.com/stevearc/conform.nvim",
     version = vim.version.range("*"),
   },
+  -- git
+  {
+    src = "https://github.com/NeogitOrg/neogit",
+    version = vim.version.range("*"),
+  },
+  {
+    src = "https://github.com/lewis6991/gitsigns.nvim",
+    version = vim.version.range("*"),
+  },
 })
