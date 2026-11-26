@@ -7,6 +7,8 @@ local packages = {
   "stylua",
   -- поддержка языка toml
   "taplo",
+  -- поддержка языка JavaScript
+  "prettier"
 }
 
 local registry = require("mason-registry")
