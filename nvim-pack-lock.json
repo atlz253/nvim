@@ -4,6 +4,11 @@
       "rev": "8b968581e5c19d22a861d5f3fe5dbd83394fa681",
       "src": "https://github.com/tjdevries/colorbuddy.nvim"
     },
+    "conform.nvim": {
+      "rev": "3543d000dafbc41cc7761d860cfdb24e82154f75",
+      "src": "https://github.com/stevearc/conform.nvim",
+      "version": ">=0.0.0"
+    },
     "mason.nvim": {
       "rev": "2a6940af80375532e5e9e7c1f2fc6319a1b7a69d",
       "src": "https://github.com/mason-org/mason.nvim",

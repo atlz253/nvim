@@ -11,6 +11,5 @@ require("noirbuddy").setup({
     diff_add = "#98C379",
     diff_change = "#E5C07B",
     diff_delete = "#E06C75",
-  }
+  },
 })
-

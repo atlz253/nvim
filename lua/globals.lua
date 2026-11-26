@@ -10,4 +10,3 @@ vim.g.loaded_netrwPlugin = 1
 -- закрытие всех окон при :q и :wq
 vim.cmd("cnoreabbrev q qa")
 vim.cmd("cnoreabbrev wq wqa")
-

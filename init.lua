@@ -9,4 +9,3 @@ require("settings")
 -- порядок обязателен снизу
 require("autostart")
 -- порядок обязателен сверху
-

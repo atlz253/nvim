@@ -1,11 +1,11 @@
 vim.pack.add({
   -- иконки файлов в file tree
   {
-    src = 'https://github.com/nvim-tree/nvim-web-devicons'
+    src = "https://github.com/nvim-tree/nvim-web-devicons",
   },
   -- file tree
   {
-    src = 'https://github.com/nvim-tree/nvim-tree.lua',
+    src = "https://github.com/nvim-tree/nvim-tree.lua",
     version = vim.version.range("*"),
   },
   -- вспомогательная библиотека, зависимость telescope
@@ -29,5 +29,9 @@ vim.pack.add({
   {
     src = "https://github.com/jesseleite/noirbuddy.nvim",
   },
+  -- форматтер
+  {
+    src = "https://github.com/stevearc/conform.nvim",
+    version = vim.version.range("*"),
+  },
 })
-
