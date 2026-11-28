@@ -24,9 +24,11 @@ local function is_editor(win, tab)
 end
 
 local function is_git(win)
-  return win
-    and api.nvim_win_is_valid(win)
-    and vim.bo[api.nvim_win_get_buf(win)].filetype == "NeogitStatus"
+  if not win or not api.nvim_win_is_valid(win) then
+    return false
+  end
+  local buf = api.nvim_win_get_buf(win)
+  return vim.bo[buf].filetype == "fugitive" and vim.b[buf].fugitive_type == "index"
 end
 
 local function editor(tab)
@@ -119,7 +121,7 @@ local function show_sidebar(mode)
 
   local cwd
   if mode == "git" then
-    cwd = api.nvim_win_call(right, vim.fn.getcwd)
+    cwd = vim.fn.getcwd(api.nvim_win_get_number(right), api.nvim_tabpage_get_number(tab))
     local started, git = pcall(
       vim.system,
       { "git", "-C", cwd, "rev-parse", "--is-inside-work-tree" },
@@ -136,14 +138,6 @@ local function show_sidebar(mode)
         vim.log.levels.INFO
       )
       return
-    end
-
-    -- Neogit uses one named status buffer, so opening it can reuse another window.
-    for _, win in ipairs(api.nvim_list_wins()) do
-      if is_git(win) then
-        vim.notify("Neogit уже открыт в другом окне", vim.log.levels.INFO)
-        return
-      end
     end
   end
 
@@ -164,7 +158,10 @@ local function show_sidebar(mode)
 
     if mode == "git" then
       local slot = open_slot(workspace.width or 30, true)
-      local opened, failure = pcall(require("neogit").open, { kind = "replace", cwd = cwd })
+      local opened, failure = pcall(function()
+        vim.cmd.lcd({ args = { cwd } })
+        vim.cmd.Git("++curwin")
+      end)
       if opened and is_git(slot) then
         left = slot
         workspace.git = slot
@@ -175,7 +172,7 @@ local function show_sidebar(mode)
         api.nvim_set_current_win(right)
         left = open_explorer(tree, workspace.width)
         vim.notify(
-          tostring(failure or "Neogit не открыл боковую панель"),
+          tostring(failure or "Статус Fugitive уже открыт в другом окне"),
           vim.log.levels.WARN
         )
       end
@@ -221,8 +218,13 @@ function M.click_sidebar(id, _, button)
   end)
 end
 
-function M.focus_explorer()
-  show_sidebar("explorer")
+function M.focus_sidebar()
+  local win = sidebar(api.nvim_get_current_tabpage(), require("nvim-tree.api").tree)
+  if win then
+    api.nvim_set_current_win(win)
+  else
+    show_sidebar("explorer")
+  end
 end
 
 function M.focus_editor()
@@ -429,7 +431,7 @@ function M.setup()
   for _, win in ipairs(windows) do
     update_bar(win)
   end
-  M.focus_explorer()
+  show_sidebar("explorer")
 end
 
 return M

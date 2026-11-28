@@ -36,6 +36,9 @@ vim.pack.add({
   },
   -- git
   {
+    src = "https://github.com/tpope/vim-fugitive",
+  },
+  {
     src = "https://github.com/NeogitOrg/neogit",
     version = vim.version.range("*"),
   },

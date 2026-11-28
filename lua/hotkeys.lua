@@ -10,8 +10,8 @@ vim.keymap.set("n", "∏", builtin.find_files, { -- Option + Shift + p
   desc = "Палитра файлов",
 })
 
-vim.keymap.set("n", "ƒ", workspace.focus_explorer, { -- Option + f
-  desc = "Фокус на file tree",
+vim.keymap.set("n", "ƒ", workspace.focus_sidebar, { -- Option + f
+  desc = "Фокус на активную вкладку левой панели",
 })
 
 vim.keymap.set("n", "©", workspace.focus_editor, { -- Option + g
